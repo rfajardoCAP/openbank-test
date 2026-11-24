@@ -1,0 +1,37 @@
+# capgemini
+
+###
+# @name valid dni
+PATCH http://localhost:1080/check-dni
+Content-Type: application/json
+
+{
+  "dni": "222222"
+}
+
+###
+# @name invalid dni
+PATCH http://localhost:1080/check-dni
+Content-Type: application/json
+
+{
+  "dni": "99999999w"
+}
+
+###
+# @name email
+POST http://localhost:1080/email
+Content-Type: application/json
+
+{
+  "message": "message"
+}
+
+###
+# @name sms
+POST http://localhost:1080/check-dni
+Content-Type: application/json
+
+{
+  "dni": "222222"
+}

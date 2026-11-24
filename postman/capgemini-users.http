@@ -1,0 +1,134 @@
+# capgemini-users
+
+###
+# @name crear usuario admin (201, email)
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "pablo",
+  "email": "email@email.com",
+  "phone": "677998899",
+  "rol": "admin",
+  "dni": "23454234F"
+}
+
+###
+# @name crear usuario superadmin (201, sms)
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "ana",
+  "email": "ana@email.com",
+  "phone": "655443322",
+  "rol": "superadmin",
+  "dni": "11111111H"
+}
+
+###
+# @name nombre de mas de 6 caracteres (409 userName)
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "pablito",
+  "email": "pablito@email.com",
+  "phone": "677000001",
+  "rol": "admin",
+  "dni": "22222222J"
+}
+
+###
+# @name email sin @ (409 email)
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "pablo",
+  "email": "email.com",
+  "phone": "677000002",
+  "rol": "admin",
+  "dni": "22222222J"
+}
+
+###
+# @name telefono vacio (409 phone)
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "pablo",
+  "email": "tel@email.com",
+  "phone": "",
+  "rol": "admin",
+  "dni": "22222222J"
+}
+
+###
+# @name rol no valido (409 rol)
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "pablo",
+  "email": "rol@email.com",
+  "phone": "677000003",
+  "rol": "user",
+  "dni": "22222222J"
+}
+
+###
+# @name email duplicado (409 email)
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "pablo",
+  "email": "juan@example.com",
+  "phone": "677000004",
+  "rol": "admin",
+  "dni": "22222222J"
+}
+
+###
+# @name dni con letra incorrecta (409 dni)
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "pablo",
+  "email": "dni@email.com",
+  "phone": "677000005",
+  "rol": "admin",
+  "dni": "23454234W"
+}
+
+###
+# @name dni que rechaza el mock 99999999w (409 dni)
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "pablo",
+  "email": "mock@email.com",
+  "phone": "677000006",
+  "rol": "admin",
+  "dni": "99999999w"
+}
+
+###
+# @name obtener usuario 1 (200)
+GET http://localhost:8080/users/1
+
+###
+# @name obtener usuario 2 de la sala 2 (404)
+GET http://localhost:8080/users/2
+
+###
+# @name obtener usuario inexistente (404)
+GET http://localhost:8080/users/999
+
+###
+# @name obtener usuario con id no numerico (400)
+GET http://localhost:8080/users/abc
